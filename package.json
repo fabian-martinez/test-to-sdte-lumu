@@ -1,0 +1,27 @@
+{
+  "name": "test-to-sdte-lumu",
+  "version": "1.0.0",
+  "description": "This repo is the test to show my capabilities about test automation to lumu",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js --config cucumber.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabian-martinez/test-to-sdte-lumu.git"
+  },
+  "keywords": [
+    "celenium",
+    "javascript"
+  ],
+  "author": "fabian-martinez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabian-martinez/test-to-sdte-lumu/issues"
+  },
+  "homepage": "https://github.com/fabian-martinez/test-to-sdte-lumu#readme",
+  "dependencies": {
+    "@cucumber/cucumber": "^11.0.1",
+    "selenium-webdriver": "^4.24.0"
+  }
+}
