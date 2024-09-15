@@ -27,6 +27,10 @@ class WordCounterPage {
         await textBox.sendKeys(text)
         await this.driver.sleep(500)
     }
+    async cleanTextBox(text) {
+        const textBox = await this.driver.findElement(By.id('box')).clear()
+        await this.driver.sleep(500)
+    }
 
     async getTextBoxContent() {
         return await this.driver.findElement(By.id('box'))

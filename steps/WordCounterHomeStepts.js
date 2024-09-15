@@ -1,6 +1,6 @@
 const { Given, When, Then, AfterAll, BeforeAll, After, Before } = require('@cucumber/cucumber');
 const assert = require("assert");
-const { driver } = require('../src/setup');
+const { driver, cleanLocalStorage } = require('../src/setup');
 const WordCounterPage = require('../src/pages/WordCounterPage');
 
 BeforeAll( async function () {
@@ -9,7 +9,7 @@ BeforeAll( async function () {
 
 /// Givens
 
-Given('the user has been entered to WordCounterHome page', async function () {
+Given('the user has been entered to WordCounterHome page', { timeout: 70000 }, async function () {
   await wordCounterPage.open()
 });
 
@@ -35,7 +35,7 @@ Then('the WordCounterHome should have a TextArea to type a text', async function
 });
 
 After( async function () {
-  // await driver.getLocalStorage().clear()
+  await wordCounterPage.cleanTextBox()
 })
 
 AfterAll( async function () {
