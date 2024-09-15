@@ -11,6 +11,7 @@ BeforeAll( async function () {
 
 Given('the user has been entered to WordCounterHome page', { timeout: 70000 }, async function () {
   await wordCounterPage.open()
+  await wordCounterPage.cleanTextBox()
 });
 
 /// Whens
@@ -34,9 +35,9 @@ Then('the WordCounterHome should have a TextArea to type a text', async function
   assert.equal(await textBox.getAttribute('placeholder'),'Start typing, or copy and paste your document here...')
 });
 
-After( async function () {
-  await wordCounterPage.cleanTextBox()
-})
+// Before( async function () {
+  
+// })
 
 AfterAll( async function () {
   await wordCounterPage.close()
