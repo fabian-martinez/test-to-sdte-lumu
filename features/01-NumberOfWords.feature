@@ -14,4 +14,4 @@ Feature: Count the number of words
             | text-typed | words-count |
             | OneWord    | 1           |
             | Two Words  | 2           |
-            | 1 2 3 4    | 4           |
+            | . @ £ 4    | 4           |
