@@ -22,6 +22,12 @@ class WordCounterPage {
         return word_count
     }
 
+    async getCharactersNumber() {
+        const top_counter = await this.driver.findElement(By.id('top_counter')).getText()
+        const characters_count = top_counter.match(/(\d+) character/)[1];
+        return characters_count
+    }
+
     async typeText(text) {
         const textBox = await this.driver.findElement(By.id('box'))
         await textBox.sendKeys(text)

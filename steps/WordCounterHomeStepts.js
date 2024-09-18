@@ -1,8 +1,7 @@
 const { Given, When, Then, AfterAll, BeforeAll, After, Before } = require('@cucumber/cucumber');
 const assert = require("assert");
-const { driver, cleanLocalStorage } = require('../src/setup');
+const { driver } = require('../src/setup');
 const WordCounterPage = require('../src/pages/WordCounterPage');
-const { CompareTables } = require('../src/utilities');
 
 BeforeAll( async function () {
   wordCounterPage = new WordCounterPage(driver)
@@ -31,6 +30,10 @@ Then('the WordCounterHome should contain a title with the number of words equal 
   assert.equal(await wordCounterPage.getWordsNumber(),words_number)
 });
 
+Then('the WordCounterHome should contain a title with the characters of words equal to {string}', async function (characters_number) {
+  assert.equal(await wordCounterPage.getCharactersNumber(),characters_number)
+});
+
 Then('the WordCounterHome should have a TextArea to type a text', async function () {
   const textBox = await wordCounterPage.getTextBoxContent()
   assert.equal(await textBox.getAttribute('placeholder'),'Start typing, or copy and paste your document here...')
@@ -39,7 +42,7 @@ Then('the WordCounterHome should have a TextArea to type a text', async function
 Then('the WordCounterHome should contain a key density table with below info', async function (dataTable) {
   wordDensityTable = await wordCounterPage.getKeywordDensityTable()
   const rawTable = dataTable.rawTable;
-  return CompareTables(rawTable,wordDensityTable)
+  assert.deepEqual(rawTable,wordDensityTable)
 });
 
 AfterAll( async function () {
