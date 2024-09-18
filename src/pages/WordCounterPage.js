@@ -35,6 +35,18 @@ class WordCounterPage {
     async getTextBoxContent() {
         return await this.driver.findElement(By.id('box'))
     }
+
+    async getKeywordDensityTable() {
+        const keywordsDensityElements = await driver.findElements(By.xpath("//DIV[@id='kwd-accordion-data']/A[@class='list-group-item']"))
+        let keywordsDensityTable = []
+        for (let keywordDensity of keywordsDensityElements) {
+            const word = await keywordDensity.findElement(By.className('word')).getText()
+            const densityText = await keywordDensity.findElement(By.className('badge')).getText()
+            const [number, percentage] = densityText.replace(/[()]/g, '').split(' ');
+            keywordsDensityTable.push([word, number, percentage])
+        }
+        return keywordsDensityTable
+    }
 }
 
 module.exports = WordCounterPage
