@@ -21,8 +21,7 @@ jobs:
           cache: 'npm'
       - uses: browser-actions/setup-firefox@v1
       - run: |
-          echo Installed firefox versions: ${{ steps.setup-firefox.outputs.firefox-version }}
-          ${{ steps.setup-firefox.outputs.firefox-path }} --version 
+          firefox --version 
       - run: npm ci
       - run: npm run test
       - uses: actions/upload-artifact@v3
