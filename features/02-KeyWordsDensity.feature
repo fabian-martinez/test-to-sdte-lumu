@@ -20,3 +20,9 @@ Feature: The three most repeated words in density section
             | one   | 1 | 33% |
             | two   | 1 | 33% |
             | three | 1 | 33% |
+
+    @TEST-5
+    Scenario: Get density of the words, When the field is empty
+        Given the user has been entered to WordCounterHome page
+        When the user type ""
+        Then the WordCounterHome should contain a key density table with the message "Start typing your document to get a list of most used keywords"

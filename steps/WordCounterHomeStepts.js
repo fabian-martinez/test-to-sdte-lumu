@@ -45,6 +45,11 @@ Then('the WordCounterHome should contain a key density table with below info', a
   assert.deepEqual(rawTable,wordDensityTable)
 });
 
+Then('the WordCounterHome should contain a key density table with the message {string}', async function (message) {
+  emptyTableMessage = await wordCounterPage.getKeywordDensityTable()
+  assert.equal(message,emptyTableMessage)
+});
+
 AfterAll( async function () {
   await wordCounterPage.close()
 });
