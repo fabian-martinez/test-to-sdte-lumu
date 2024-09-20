@@ -1,5 +1,5 @@
 @TESTSET-1
-Feature: Count the number of words
+Feature: Count the number of words and characters
 
     @TEST-1
     Scenario: Number of words is 0 when enter the app
