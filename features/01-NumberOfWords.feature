@@ -14,8 +14,7 @@ Feature: Count the number of words and characters
         When the user type "<text-typed>"
         Then the WordCounterHome should contain a title with the number of words equal to "<words-count>"
         And the WordCounterHome should contain a title with the characters of words equal to "<characters-count>"
-        And this is a test step 
-
+        
         Examples:
             | text-typed | words-count | characters-count |
             | A          | 1           | 1                |
