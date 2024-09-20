@@ -1,10 +1,21 @@
-const { Builder } = require('selenium-webdriver')
+const { Builder, Browser } = require('selenium-webdriver')
 
 // driver setup
 capabilities = {
-    browserName: 'firefox',
-}
+    "capabilities": {
+      "alwaysMatch": {
+        "browserName": "firefox",
+        "moz:firefoxOptions": {
+          "args": ["-headless"],
+        }
+      },
+      "firstMatch": [{ "platformName": "macos" }, { "platformName": "linux" }]
+    }
+  }
 
-driver = new Builder().withCapabilities(capabilities).build()
+driver = new Builder()
+.forBrowser(Browser.FIREFOX)
+.setFirefoxOptions(capabilities)
+.build();
 
 module.exports = { driver }
